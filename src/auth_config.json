@@ -1,4 +1,5 @@
 {
   "domain": "kevinjimenez.auth0.com",
-  "clientId": "eT8V9BrNHwCKPJqLTOdbT3gWpMC8KCG8"
+  "clientId": "eT8V9BrNHwCKPJqLTOdbT3gWpMC8KCG8",
+  "audience": "bank.dev"
 }

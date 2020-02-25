@@ -1,5 +1,3 @@
-// src/index.js
-
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -24,6 +22,7 @@ ReactDOM.render(
     client_id={config.clientId}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
+    audience={config.audience}
   >
     <App />
   </Auth0Provider>,

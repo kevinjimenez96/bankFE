@@ -1,0 +1,8 @@
+@import "./variables.scss";
+@import "./components/accounts/account.scss";
+@import "./components/account-item/account-item.scss";
+
+.App {
+  background-color: $bg-color;
+  min-height: 100vh;
+}
