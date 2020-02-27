@@ -2,6 +2,11 @@
   border-radius: 1rem;
   background: #ffffff;
   box-shadow: 10px 10px 15px #bec3c9;
+  &--small {
+    width: 100%;
+    height: 5rem;
+    margin: 1rem 0;
+  }
   &--medium {
     width: 20rem;
     height: 7rem;

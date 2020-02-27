@@ -6,6 +6,7 @@ import { Spin } from "antd";
 const Services = () => {
   const [services, setServices] = useState([]);
   const [accounts, setAccounts] = useState([]);
+  const [servicePaid, setservicePaid] = useState(true);
 
   const servicesAxios = useAxios({
     url: `http://localhost:8080/v1/user/services`,
@@ -28,14 +29,17 @@ const Services = () => {
   });
 
   useEffect(() => {
-    servicesAxios.reFetch();
-    accountsAxios.reFetch();
-  }, []);
+    if (servicePaid) {
+      servicesAxios.reFetch();
+      accountsAxios.reFetch();
+      setservicePaid(false);
+    }
+    // eslint-disable-next-line
+  }, [servicePaid]);
 
   useEffect(() => {
     if (servicesAxios.response !== null) {
       setServices(servicesAxios.response.data);
-      console.log(servicesAxios.response.data);
     }
   }, [servicesAxios.response]);
 
@@ -60,7 +64,11 @@ const Services = () => {
       <ul className="services__list">
         {services.map(service => (
           <li key={service.id}>
-            <ServiceItem service={service} accounts={accounts} />
+            <ServiceItem
+              service={service}
+              accounts={accounts}
+              setservicePaid={setservicePaid}
+            />
           </li>
         ))}
       </ul>

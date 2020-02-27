@@ -6,7 +6,7 @@ import axios from "axios";
 
 const { Option } = Select;
 
-const ServiceItem = ({ service, accounts }) => {
+const ServiceItem = ({ service, accounts, setservicePaid }) => {
   const [selected, setSelected] = useState();
   const options = accounts.map(account => (
     <Option key={account.id} value={account.id}>
@@ -30,7 +30,27 @@ const ServiceItem = ({ service, accounts }) => {
     </Option>
   ));
 
-  const handleOnClick = () => {};
+  const handleOnClick = () => {
+    let body = {
+      service: {
+        id: service.id
+      },
+      account: {
+        id: selected
+      }
+    };
+    console.log(body);
+    axios({
+      method: "delete",
+      url: "http://localhost:8080/v1/user/services",
+      data: body,
+      headers: {
+        Authorization: `Bearer ${window.sessionStorage.getItem("token")}`
+      }
+    }).then(() => {
+      setservicePaid(true);
+    });
+  };
   return (
     <Card className="service-item card--medium">
       <div

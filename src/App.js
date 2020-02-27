@@ -52,7 +52,9 @@ function App() {
                 <PrivateRoute path="/logout" component={Logout} />
               </Switch>
             </Content>
-            <Footer>Bunny Money ©2020 Created by Kevin Jiménez</Footer>
+            <Footer className="footer">
+              Bunny Money ©2020 Created by Kevin Jiménez
+            </Footer>
           </Layout>
         </Layout>
       </Router>

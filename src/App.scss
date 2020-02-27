@@ -7,7 +7,9 @@
 @import "./components/add-transfer/add-transfer.scss";
 @import "./components/services/services.scss";
 @import "./components/service-item/service-item.scss";
-
+@import "./components/transactions/transactions.scss";
+@import "./components/transaction-list/transaction-list.scss";
+@import "./components/transaction-item/transaction-item.scss";
 .App {
   background-color: $bg-color;
   min-height: 100vh;
@@ -35,6 +37,10 @@
 .main-content {
   display: flex;
   justify-content: center;
+}
+
+.footer {
+  text-align: center;
 }
 
 @media (min-width: 1080px) {

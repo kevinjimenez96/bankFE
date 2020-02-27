@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../card/card";
 import useAxios from "@use-hooks/axios";
 import AddTransfer from "../add-transfer/add-transfer";
+import TransactionsList from "../transaction-list/transaction-list";
 
 const Transactions = () => {
   const [accounts, setAccounts] = useState([]);
@@ -32,6 +33,7 @@ const Transactions = () => {
         <h2>Transfer</h2>
         <AddTransfer accounts={accounts} />
       </Card>
+      <TransactionsList />
     </section>
   );
 };
