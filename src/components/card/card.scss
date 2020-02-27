@@ -1,6 +1,16 @@
 .card {
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 10px 10px 15px #bec3c9;
   &--medium {
-    height: 15rem;
-    width: 10rem;
+    width: 20rem;
+    height: 7rem;
+    margin: 1rem;
+  }
+  &--big {
+    width: 100%;
+    min-width: 15rem;
+    height: 30rem;
+    padding: 1rem;
   }
 }

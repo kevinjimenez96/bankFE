@@ -15,27 +15,30 @@ const Sidebar = () => {
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);
       }}
+      className="sidebar"
     >
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["2"]}>
-        <Menu.Item key="1">
-          <Icon type="user" />
-          <span className="nav-text">Profile</span>
-        </Menu.Item>
+      <Menu theme="dark" mode="inline">
         <Menu.Item key="2">
-          <Icon type="credit-card" />
-          <span className="nav-text">Accounts</span>
+          <Link to="/accounts">
+            <Icon type="credit-card" />
+            <span className="nav-text">Accounts</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="3">
-          <Icon type="transaction" />
-          <span className="nav-text">Transactions</span>
+          <Link to="/transactions">
+            <Icon type="transaction" />
+            <span className="nav-text">Transactions</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="4">
           <Icon type="pie-chart" />
           <span className="nav-text">Usage</span>
         </Menu.Item>
         <Menu.Item key="5">
-          <Icon type="bulb" />
-          <span className="nav-text">Services</span>
+          <Link to="/services">
+            <Icon type="bulb" />
+            <span className="nav-text">Services</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="6">
           <Link to="/logout">

@@ -1,0 +1,28 @@
+.card-header {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem;
+    align-items: baseline;
+    width: 100%;
+    padding: 0;
+  }
+  &__title {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  &__secondary {
+    font-size: 0.7rem;
+  }
+  &__amount {
+    font-size: 1.1rem;
+    &--red {
+      color: red;
+    }
+    &--green {
+      color: rgb(45, 199, 45);
+    }
+  }
+}

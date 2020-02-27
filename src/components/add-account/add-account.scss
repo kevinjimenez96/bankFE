@@ -1,0 +1,20 @@
+.add-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__button {
+    border: 3px dotted #d3d3d3;
+    background-color: $bg-color;
+    width: 15rem;
+    height: 7rem;
+    margin: 1rem;
+    transition: all 0.3s;
+  }
+  &__button:hover {
+    border: 3px dotted #d3d3d3;
+    background-color: #fcfcfc;
+    box-shadow: 3px 3px 8px 0px rgba(148, 146, 148, 1);
+    width: 15rem;
+    height: 7rem;
+  }
+}

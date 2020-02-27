@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 import SignUp from "../sign-up/sign-up";
 
 class ModalSignUp extends React.Component {
@@ -23,23 +23,14 @@ class ModalSignUp extends React.Component {
   };
 
   render() {
-    const { visible, loading } = this.state;
+    const { visible } = this.state;
     return (
       <div>
         <Modal
           visible={visible}
           title="We need some extra information about you!"
           onOk={this.handleOk}
-          footer={[
-            <Button
-              key="submit"
-              type="primary"
-              loading={loading}
-              onClick={this.handleOk}
-            >
-              Submit
-            </Button>
-          ]}
+          footer={[]}
           maskClosable={false}
           closable={false}
         >

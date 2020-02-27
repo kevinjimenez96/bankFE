@@ -9,20 +9,29 @@ import Accounts from "./components/accounts/accounts";
 import Sidebar from "./components/sidebar/sidebar";
 import Logout from "./components/Logout";
 import SignUp from "./components/sign-up/sign-up";
+import Transactions from "./components/transactions/transactions";
+import { Spin } from "antd";
 import "./App.scss";
+import Services from "./components/services/services";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-
+  const { isAuthenticated, loading } = useAuth0();
+  if (loading) {
+    return (
+      <div className="large-spin-container">
+        <Spin size="large" />
+      </div>
+    );
+  }
   return (
     <div className="App">
       <Router history={history}>
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout style={{ minHeight: "100vh" }} hasSider={true}>
           {isAuthenticated && <Sidebar></Sidebar>}
           <Layout>
-            <Content>
+            <Content className="main-content">
               <Switch>
                 <Route path="/sign-up" component={SignUp} />
                 {!isAuthenticated && (
@@ -34,10 +43,16 @@ function App() {
                   </Route>
                 )}
                 <PrivateRoute path="/accounts" exact component={Accounts} />
+                <PrivateRoute
+                  path="/transactions"
+                  exact
+                  component={Transactions}
+                />
+                <PrivateRoute path="/services" exact component={Services} />
                 <PrivateRoute path="/logout" component={Logout} />
               </Switch>
             </Content>
-            <Footer>Footer</Footer>
+            <Footer>Bunny Money ©2020 Created by Kevin Jiménez</Footer>
           </Layout>
         </Layout>
       </Router>

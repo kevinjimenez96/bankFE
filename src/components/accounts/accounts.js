@@ -2,22 +2,21 @@ import React, { useState, useEffect } from "react";
 import useAxios from "@use-hooks/axios";
 import { useAuth0 } from "../../react-auth0-spa";
 import AccountItem from "../account-item/account-item";
-import { Redirect } from "react-router-dom";
 import AddAccount from "../add-account/add-account";
 import ModalSignUp from "../modal-sign-up/modal-sign-up";
 import { Spin } from "antd";
 
 function Accounts() {
   const [accounts, setAccounts] = useState([]);
-  const [userExists, setuserExists] = useState(true);
+  const [userExists, setuserExists] = useState(undefined);
   const { getTokenSilently, loading } = useAuth0();
   const [token, settoken] = useState();
-  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [newAccount, setNewAccount] = useState(undefined);
 
   useEffect(() => {
-    getTokenSilently().then(token => {
-      window.sessionStorage.setItem("token", token);
-      settoken(token);
+    getTokenSilently().then(newToken => {
+      window.sessionStorage.setItem("token", newToken);
+      settoken(newToken);
     });
     // eslint-disable-next-line
   }, []);
@@ -43,17 +42,15 @@ function Accounts() {
       userAxios.reFetch();
     }
     // eslint-disable-next-line
-  }, [token, userExists]);
+  }, [token]);
 
   useEffect(() => {
-    console.log(userAxios.response);
     if (userAxios.response != null) {
       if (userAxios.response.data !== "") {
         window.sessionStorage.setItem(
           "user",
           JSON.stringify(userAxios.response.data)
         );
-        console.log("existas");
         setuserExists(true);
       } else {
         setuserExists(false);
@@ -63,10 +60,11 @@ function Accounts() {
 
   useEffect(() => {
     if (token !== undefined) {
-      accountsAxios.reFetch();
+      if (newAccount === undefined || newAccount) accountsAxios.reFetch();
+      setNewAccount(false);
     }
     // eslint-disable-next-line
-  }, [userExists]);
+  }, [userExists, newAccount]);
 
   useEffect(() => {
     if (accountsAxios.response !== null) {
@@ -76,29 +74,28 @@ function Accounts() {
 
   if (userAxios.loading || accountsAxios.loading || loading) {
     return (
-      <div>
+      <div className="large-spin-container">
         <Spin size="large" />
       </div>
     );
   }
-
   return (
-    <div className="accounts">
-      <h1 className="accounts__title">Accounts</h1>
+    <section className="accounts content">
+      <h1 className="accounts__title content__title">Accounts</h1>
       <ul className="accounts__list">
         {accounts.map(account => {
           return (
-            <li key={account.id}>
+            <li className="accounts__item" key={account.id}>
               <AccountItem account={account} />
             </li>
           );
         })}
-        <AddAccount />
+        <AddAccount setNewAccount={setNewAccount} />
       </ul>
-      {!userExists && (
+      {userExists !== undefined && !userExists && (
         <ModalSignUp isVisible={true} setUserExist={setuserExists} />
       )}
-    </div>
+    </section>
   );
 }
 

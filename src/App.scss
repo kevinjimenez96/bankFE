@@ -1,8 +1,41 @@
 @import "./variables.scss";
-@import "./components/accounts/account.scss";
+@import "./components/card/card.scss";
+@import "./components/accounts/accounts.scss";
 @import "./components/account-item/account-item.scss";
+@import "./components/add-account/add-account.scss";
+@import "./components/card-header/card-header.scss";
+@import "./components/add-transfer/add-transfer.scss";
+@import "./components/services/services.scss";
+@import "./components/service-item/service-item.scss";
 
 .App {
   background-color: $bg-color;
   min-height: 100vh;
+}
+
+.large-spin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45rem;
+  &__title {
+    font-size: 2rem;
+    border-bottom: 1px solid #001529;
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1080px) {
 }

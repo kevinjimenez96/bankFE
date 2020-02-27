@@ -1,0 +1,11 @@
+.account-option {
+  display: flex;
+  justify-content: space-between;
+  &__amount {
+    color: rgb(45, 199, 45);
+  }
+}
+
+.ant-select-selection-selected-value {
+  width: 100%;
+}

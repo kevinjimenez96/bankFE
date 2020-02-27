@@ -1,11 +1,20 @@
 import React from "react";
 import axios from "axios";
-import { Button, Modal, Form, Select, Slider, Tooltip } from "antd";
+import { Modal, Form, Select, Slider, Tooltip, Icon } from "antd";
 const { Option } = Select;
 
 const AccountModalForm = Form.create({ name: "account_form_in_modal" })(
   // eslint-disable-next-line
   class extends React.Component {
+    isCredit = false;
+    onChange = value => {
+      if (value === "CREDIT") {
+        this.isCredit = true;
+      } else {
+        this.isCredit = false;
+      }
+    };
+
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
       const { getFieldDecorator } = form;
@@ -42,35 +51,40 @@ const AccountModalForm = Form.create({ name: "account_form_in_modal" })(
                   }
                 ]
               })(
-                <Select placeholder="Please select a type">
+                <Select
+                  placeholder="Please select a type"
+                  onChange={this.onChange}
+                >
                   <Option value="DEBIT">DEBIT</Option>
                   <Option value="CREDIT">CREDIT</Option>
                 </Select>
               )}
             </Form.Item>
-            <Tooltip title="Your limit account is determined by its interest">
-              <Form.Item label="Interest">
-                {getFieldDecorator("interest", {
-                  rules: [
-                    {
-                      required: true,
-                      message: "Please select the account interest!"
-                    }
-                  ],
-                  initialValue: 0
-                })(
-                  <Slider
-                    max={15}
-                    marks={{
-                      0: "0",
-                      5: "5",
-                      10: "10",
-                      15: "15"
-                    }}
-                  />
-                )}
-              </Form.Item>
-            </Tooltip>
+            {this.isCredit && (
+              <Tooltip title="Your limit account is determined by its interest">
+                <Form.Item label="Interest">
+                  {getFieldDecorator("interest", {
+                    rules: [
+                      {
+                        required: true,
+                        message: "Please select the account interest!"
+                      }
+                    ],
+                    initialValue: 0
+                  })(
+                    <Slider
+                      max={15}
+                      marks={{
+                        0: "0",
+                        5: "5",
+                        10: "10",
+                        15: "15"
+                      }}
+                    />
+                  )}
+                </Form.Item>
+              </Tooltip>
+            )}
           </Form>
         </Modal>
       );
@@ -97,7 +111,6 @@ class AddAccount extends React.Component {
       if (err) {
         return;
       }
-
       axios({
         method: "post",
         url: "http://localhost:8080/v1/account",
@@ -105,8 +118,9 @@ class AddAccount extends React.Component {
         headers: {
           Authorization: `Bearer ${window.sessionStorage.getItem("token")}`
         }
+      }).then(res => {
+        this.props.setNewAccount(true);
       });
-      console.log("Received values of form: ", values);
       form.resetFields();
       this.setState({ visible: false });
     });
@@ -118,10 +132,14 @@ class AddAccount extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button type="primary" onClick={this.showModal}>
-          New Collection
-        </Button>
+      <div className="add-account card--medium">
+        <button onClick={this.showModal} className="add-account__button">
+          <Icon
+            type="plus-circle"
+            style={{ fontSize: "3rem", color: "#D3D3D3" }}
+            theme="outlined"
+          />
+        </button>
         <AccountModalForm
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}

@@ -7,13 +7,22 @@ const AccountItem = ({ account }) => {
 
   return (
     <Card className="account-item card--medium">
+      <div
+        className={
+          "account-item__bar" +
+          (account.accountType === "CREDIT"
+            ? " account-item__bar--credit"
+            : " account-item__bar--debit")
+        }
+      ></div>
+
       <CardHeader
         currency={account.currency}
         amount={account.balance}
         title={accountId}
         secondary={account.accountType}
+        redAmount={account.accountType === "CREDIT" ? true : false}
       />
-      <div className="account-item__bar"></div>
     </Card>
   );
 };

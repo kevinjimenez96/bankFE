@@ -1,0 +1,38 @@
+.service-item {
+  display: flex;
+  &__card-header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  &__bar {
+    width: 1rem;
+    height: 100%;
+    display: inline-block;
+    &--WATER {
+      background-color: #59a5d8;
+    }
+    &--ELECTRICITY {
+      background-color: #f5f76c;
+    }
+    &--PHONE {
+      background-color: #591140;
+    }
+  }
+  &__payment {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
+  }
+
+  &__select {
+    width: 75%;
+  }
+  &__option {
+    font-size: 0.75rem;
+  }
+  &__option-amount {
+    color: rgb(45, 199, 45);
+  }
+}
