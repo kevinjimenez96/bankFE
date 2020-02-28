@@ -10,6 +10,8 @@
 @import "./components/transactions/transactions.scss";
 @import "./components/transaction-list/transaction-list.scss";
 @import "./components/transaction-item/transaction-item.scss";
+@import "./components/landing-page/landing-page.scss";
+
 .App {
   background-color: $bg-color;
   min-height: 100vh;
@@ -41,6 +43,7 @@
 
 .footer {
   text-align: center;
+  background-color: white;
 }
 
 @media (min-width: 1080px) {
