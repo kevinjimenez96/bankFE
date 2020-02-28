@@ -12,7 +12,7 @@ class RegistrationForm extends React.Component {
         values["birthday"] = values["birthday"].format("DD-MM-YYYY");
         axios({
           method: "post",
-          url: "https://142.93.241.254:8080/v1/user/register",
+          url: "http://142.93.241.254:8080/v1/user/register",
           data: values,
 
           headers: {
