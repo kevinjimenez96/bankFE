@@ -8,7 +8,7 @@ const Transactions = () => {
   const [accounts, setAccounts] = useState([]);
 
   const accountsAxios = useAxios({
-    url: `http://localhost:8080/v1/account/me`,
+    url: `http://142.93.241.254:8080/v1/account/me`,
     method: "GET",
     options: {
       headers: {

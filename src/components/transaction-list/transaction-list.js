@@ -8,7 +8,7 @@ const TransactionList = () => {
   const [fullTransactions, setFullTransactions] = useState([]);
   const [both, setboth] = useState(false);
   const transactionsFromAxios = useAxios({
-    url: `http://localhost:8080/v1/transaction/from`,
+    url: `http://142.93.241.254:8080/v1/transaction/from`,
     method: "GET",
     options: {
       headers: {
@@ -17,7 +17,7 @@ const TransactionList = () => {
     }
   });
   const transactionsToAxios = useAxios({
-    url: `http://localhost:8080/v1/transaction/to`,
+    url: `http://142.93.241.254:8080/v1/transaction/to`,
     method: "GET",
     options: {
       headers: {

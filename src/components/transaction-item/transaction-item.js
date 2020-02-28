@@ -6,7 +6,7 @@ import useAxios from "@use-hooks/axios";
 const TransactionItem = ({ transaction }) => {
   const [, setaccountTo] = useState();
   const accountAxios = useAxios({
-    url: `http://localhost:8080/v1/account/${transaction.accountTo.id}`,
+    url: `http://142.93.241.254:8080/v1/account/${transaction.accountTo.id}`,
     method: "GET",
     options: {
       headers: {
