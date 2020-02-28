@@ -115,7 +115,7 @@ class AddAccount extends React.Component {
       }
       axios({
         method: "post",
-        url: "http://142.93.241.254:8080/v1/account",
+        url: "https://142.93.241.254:8080/v1/account",
         data: values,
         headers: {
           Authorization: `Bearer ${window.sessionStorage.getItem("token")}`

@@ -42,7 +42,7 @@ const ServiceItem = ({ service, accounts, setservicePaid }) => {
     };
     axios({
       method: "delete",
-      url: "http://142.93.241.254:8080/v1/user/services",
+      url: "https://142.93.241.254:8080/v1/user/services",
       data: body,
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("token")}`

@@ -37,7 +37,7 @@ const AddTransfer = Form.create({ name: "transfer_form_in_modal" })(
       } else {
         let response = await axios({
           method: "get",
-          url: "http://142.93.241.254:8080/v1/account/" + value,
+          url: "https://142.93.241.254:8080/v1/account/" + value,
           headers: {
             Authorization: `Bearer ${window.sessionStorage.getItem("token")}`
           }
@@ -69,7 +69,7 @@ const AddTransfer = Form.create({ name: "transfer_form_in_modal" })(
           };
           axios({
             method: "post",
-            url: "http://142.93.241.254:8080/v1/transaction",
+            url: "https://142.93.241.254:8080/v1/transaction",
             data: body,
 
             headers: {
