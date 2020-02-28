@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Modal, Form, Select, Slider, Tooltip, Icon } from "antd";
+import cogoToast from "cogo-toast";
+
 const { Option } = Select;
 
 const AccountModalForm = Form.create({ name: "account_form_in_modal" })(
@@ -120,6 +122,7 @@ class AddAccount extends React.Component {
         }
       }).then(res => {
         this.props.setNewAccount(true);
+        cogoToast.success("The account was added.");
       });
       form.resetFields();
       this.setState({ visible: false });

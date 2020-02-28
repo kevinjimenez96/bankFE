@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Select, Button, Input } from "antd";
 import axios from "axios";
+import cogoToast from "cogo-toast";
 
 const { Option } = Select;
 
@@ -60,14 +61,12 @@ const AddTransfer = Form.create({ name: "transfer_form_in_modal" })(
       e.preventDefault();
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           let body = {
             amount: values["amount"],
             accountFrom: { id: values["from"] },
             accountTo: { id: parseInt(values["to"]) },
             currency: this.state.selectedAccount.currency
           };
-          console.log(body);
           axios({
             method: "post",
             url: "http://localhost:8080/v1/transaction",
@@ -78,6 +77,7 @@ const AddTransfer = Form.create({ name: "transfer_form_in_modal" })(
             }
           }).then(() => {
             window.location.href = "/transactions";
+            cogoToast.success("The transfer was succesfull.");
           });
         }
       });

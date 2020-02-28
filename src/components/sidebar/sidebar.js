@@ -9,14 +9,11 @@ const Sidebar = () => {
     <Sider
       breakpoint="sm"
       collapsedWidth="0"
-      onBreakpoint={broken => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-      className="sidebar"
+      onBreakpoint={broken => {}}
+      onCollapse={(collapsed, type) => {}}
+      className="sider"
     >
+      <img className="sider__img" src="/name--white.png" alt="Bunny Money" />
       <Menu theme="dark" mode="inline">
         <Menu.Item key="2">
           <Link to="/accounts">

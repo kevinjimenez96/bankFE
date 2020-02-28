@@ -10,7 +10,6 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         values["birthday"] = values["birthday"].format("DD-MM-YYYY");
-        console.log("Received values of form: ", values);
         axios({
           method: "post",
           url: "http://localhost:8080/v1/user/register",

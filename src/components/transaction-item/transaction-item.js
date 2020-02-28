@@ -4,7 +4,7 @@ import CardHeader from "../card-header/card-header";
 import useAxios from "@use-hooks/axios";
 
 const TransactionItem = ({ transaction }) => {
-  const [accountTo, setaccountTo] = useState();
+  const [, setaccountTo] = useState();
   const accountAxios = useAxios({
     url: `http://localhost:8080/v1/account/${transaction.accountTo.id}`,
     method: "GET",
@@ -17,11 +17,11 @@ const TransactionItem = ({ transaction }) => {
 
   useEffect(() => {
     accountAxios.reFetch();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (accountAxios.response != null && accountAxios.response.data !== "") {
-      console.log(accountAxios.response.data);
       setaccountTo(accountAxios.response.data);
     }
   }, [accountAxios.response]);

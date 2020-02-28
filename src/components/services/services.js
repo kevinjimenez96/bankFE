@@ -45,7 +45,6 @@ const Services = () => {
 
   useEffect(() => {
     if (accountsAxios.response !== null) {
-      console.log(accountsAxios.response.data);
       setAccounts(accountsAxios.response.data);
     }
   }, [accountsAxios.response]);
@@ -61,8 +60,10 @@ const Services = () => {
   return (
     <section className="services content">
       <h1 className="services__title content__title">Services</h1>
-      <ul className="services__list">
-        {services.map(service => (
+      {services.length === 0 ? (
+        <span>You don't have remaining services.</span>
+      ) : (
+        services.map(service => (
           <li key={service.id}>
             <ServiceItem
               service={service}
@@ -70,8 +71,9 @@ const Services = () => {
               setservicePaid={setservicePaid}
             />
           </li>
-        ))}
-      </ul>
+        ))
+      )}
+      <ul className="services__list"></ul>
     </section>
   );
 };

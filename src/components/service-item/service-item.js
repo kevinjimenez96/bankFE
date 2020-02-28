@@ -3,6 +3,7 @@ import Card from "../card/card";
 import CardHeader from "../card-header/card-header";
 import { Button, Select } from "antd";
 import axios from "axios";
+import cogoToast from "cogo-toast";
 
 const { Option } = Select;
 
@@ -39,7 +40,6 @@ const ServiceItem = ({ service, accounts, setservicePaid }) => {
         id: selected
       }
     };
-    console.log(body);
     axios({
       method: "delete",
       url: "http://localhost:8080/v1/user/services",
@@ -49,6 +49,7 @@ const ServiceItem = ({ service, accounts, setservicePaid }) => {
       }
     }).then(() => {
       setservicePaid(true);
+      cogoToast.success("The service was paid.");
     });
   };
   return (

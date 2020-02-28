@@ -1,3 +1,8 @@
-.sidebar {
+.sider {
   z-index: 100;
+  padding-top: 1rem;
+  &__img {
+    width: 95%;
+    margin-bottom: 1rem;
+  }
 }
