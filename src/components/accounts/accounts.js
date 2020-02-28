@@ -22,7 +22,7 @@ function Accounts() {
   }, []);
 
   const userAxios = useAxios({
-    url: `http://142.93.241.254:8080/v1/user/me`,
+    url: `https://142.93.241.254:8080/v1/user/me`,
     method: "GET",
     options: {
       headers: { Authorization: `Bearer ${token}` }
@@ -30,7 +30,7 @@ function Accounts() {
   });
 
   const accountsAxios = useAxios({
-    url: `http://142.93.241.254:8080/v1/account/me`,
+    url: `https://142.93.241.254:8080/v1/account/me`,
     method: "GET",
     options: {
       headers: { Authorization: `Bearer ${token}` }
